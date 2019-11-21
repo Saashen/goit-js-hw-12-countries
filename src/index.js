@@ -7,10 +7,8 @@ import getGeoPosition from './js/getGeoPosition';
 const refs = {
   searchForm: document.querySelector('#search-form'),
   weatherSection: document.querySelector('#weather'),
-  weatherInfo: document.querySelectorAll('p'),
 };
 
-// Заміна результатів погоди
 // Прибрати табличку з error (location.json is not a function)
 // Ссылку на иконку в ответе от Apixu API необходимо дополнить протоколом `https:`
 
@@ -26,8 +24,8 @@ refs.searchForm.addEventListener('submit', searchSubmitHandler);
 
 function searchSubmitHandler(e) {
   e.preventDefault();
-
   const inputValue = e.currentTarget.elements.city.value;
+  clearResult();
 
   fetchWeather(inputValue).then(data => {
     const markup = buildWeatherMarkup(data);
@@ -42,4 +40,8 @@ function buildWeatherMarkup(item) {
 function insertWeatherMarkup(item) {
   refs.weatherSection.insertAdjacentHTML('beforeend', item);
   refs.weatherSection.classList.remove('is-hidden');
+}
+
+function clearResult() {
+  refs.weatherSection.innerHTML = '';
 }
