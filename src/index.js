@@ -3,6 +3,7 @@ import './styles.css';
 import fetchWeather from './js/fetchWeather';
 import weatherShowTemplate from './templates/markupTemplate.hbs';
 import getGeoPosition from './js/getGeoPosition';
+import spinner from './js/spinner';
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
@@ -14,31 +15,38 @@ const refs = {
 
 getGeoPosition().then(data => {
   const query = `${data.coords.latitude},${data.coords.longitude}`;
-  fetchWeather(query).then(data => {
-    const markup = buildWeatherMarkup(data);
-    insertWeatherMarkup(markup);
-  });
+
+  spinner.show();
+  fetchWeather(query)
+    .then(data => {
+      spinner.hide();
+      insertWeatherMarkup(data);
+    })
+    .catch(error => console.warn(error));
 });
 
 refs.searchForm.addEventListener('submit', searchSubmitHandler);
 
 function searchSubmitHandler(e) {
   e.preventDefault();
-  const inputValue = e.currentTarget.elements.city.value;
+
+  const input = e.currentTarget.elements.city;
   clearResult();
 
-  fetchWeather(inputValue).then(data => {
-    const markup = buildWeatherMarkup(data);
-    insertWeatherMarkup(markup);
-  });
-}
+  spinner.show();
+  fetchWeather(input.value)
+    .then(data => {
+      spinner.hide();
+      insertWeatherMarkup(data);
+    })
+    .catch(error => console.warn(error));
 
-function buildWeatherMarkup(item) {
-  return weatherShowTemplate(item);
+  input.value = '';
 }
 
 function insertWeatherMarkup(item) {
-  refs.weatherSection.insertAdjacentHTML('beforeend', item);
+  const markup = weatherShowTemplate(item);
+  refs.weatherSection.insertAdjacentHTML('beforeend', markup);
   refs.weatherSection.classList.remove('is-hidden');
 }
 
