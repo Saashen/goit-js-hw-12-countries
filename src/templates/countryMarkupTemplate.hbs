@@ -1,0 +1,16 @@
+<div class="country-wrap">
+    <h2 class="country-name" data-field="country">{{name}}</h2>
+    <div>
+        <p class="country-capital"><span class="bold">Capital:</span> {{capital}}</p>
+        <p class="country-population"><span class="bold">Population:</span> {{population}}</p>
+        <p class="country-languages"><span class="bold">Languages:</span>
+            <ul>
+                {{#each languages}}
+                <li class="country-languages" data-field="languages">{{this.name}}</li>
+                {{/each}}
+            </ul>
+        </p>
+    </div>
+
+    <img class="country-flag" src="{{flag}}" alt="{{name}}" />
+</div>
