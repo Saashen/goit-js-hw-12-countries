@@ -10,7 +10,6 @@ const refs = {
   weatherSection: document.querySelector('#weather'),
 };
 
-// Прибрати табличку з error (location.json is not a function)
 // Ссылку на иконку в ответе от Apixu API необходимо дополнить протоколом `https:`
 
 getGeoPosition().then(data => {

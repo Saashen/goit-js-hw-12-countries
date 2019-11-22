@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
 html {
   box-sizing: border-box;
 }
@@ -8,11 +10,48 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.search-form input {
+  padding: 8px 16px 6px;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.search-form button {
+  padding: 6px 16px;
+  background-color: #36c18e;
+  border: 2px solid #36c18e;
+  color: #ffffff;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  /* text-transform: uppercase; */
+}
+
+.weather {
+  text-align: center;
+  line-height: 100%;
+}
+
+.weather h2 {
+  padding: 20px 0;
+  font-style: bold;
+  font-weight: 700;
+  font-size: 26px;
+  color: #36c18e;
+  text-transform: uppercase;
+}
+
 .weather.is-hidden {
   display: none;
 }
 
-.spinner-overlay{
+.spinner-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -24,7 +63,7 @@ html {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.spinner-overlay.is-hidden{
+.spinner-overlay.is-hidden {
   display: none;
 }
 
@@ -56,16 +95,35 @@ html {
 }
 
 @-webkit-keyframes sk-bouncedelay {
-  0%, 80%, 100% { -webkit-transform: scale(0) }
-  40% { -webkit-transform: scale(1.0) }
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
 }
 
 @keyframes sk-bouncedelay {
-  0%, 80%, 100% { 
+  0%,
+  80%,
+  100% {
     -webkit-transform: scale(0);
     transform: scale(0);
-  } 40% { 
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
   }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.credit {
+  text-align: right;
+  padding-right: 40px;
+  font-size: 14px;
+}
+
+.credit a{
+  color: #007461;
 }

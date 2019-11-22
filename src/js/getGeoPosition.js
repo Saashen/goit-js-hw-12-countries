@@ -12,9 +12,9 @@ export default function getGeoPosition() {
 }
 
 getGeoPosition()
-  .then(location => location.json())
+  .then(location => location)
   .catch(error => {
-    console.error(error.message);
+    console.error(error);
     const notice = PNotify.notice({
       text: 'Нет прав доступа к геопозиции, используйте поиск по имени города.',
     });

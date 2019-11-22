@@ -1,4 +1,4 @@
-const baseURL = 'https://api.weatherstack.com/current';
+const baseURL = 'http://api.weatherstack.com/current';
 
 export default function fetchWeather(query) {
     const options = {
